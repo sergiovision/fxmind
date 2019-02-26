@@ -24,7 +24,7 @@ MySQL - to store financial data in DB and for trading history.
 
 Folder list:
 
-businesslogic - main business logic of C# part of the robot. Fetching/storing Financial data in DB 
+businesslogic - main business logic. Fetching/storing Financial data in DB 
 
 webclient - website written in Vaadin 7.X for java part of the robot administration and monitoring. Using this site you can access status of robot from any location just by accessing it https://yourserver/webclient. It is a .war file which can run in any java web server like Tomcat, Jboss etc.
 
