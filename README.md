@@ -3,7 +3,7 @@
 
 
 This project shows approaches in trading software using Java technologies.
-New version of this application written in .NET and can be downloaded here: https://github.com/sergiovision/XTradeServer
+New version of this application written in .NET and can be downloaded here: [XTradeServer](https://github.com/sergiovision/XTradeServer)
 
 Forex robot written in java, apache thrift and MQL, that helps you train with Forex robot.
 fxmind java
