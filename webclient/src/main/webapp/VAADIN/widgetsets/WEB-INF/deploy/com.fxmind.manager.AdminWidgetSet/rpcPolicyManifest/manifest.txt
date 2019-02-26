@@ -1,0 +1,2 @@
+# Module com.fxmind.manager.AdminWidgetSet
+# RPC service class, partial path of RPC policy file

@@ -1,0 +1,1 @@
+mvn -T 2C -P winlocal clean install

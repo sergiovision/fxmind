@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <import resource="classpath:spring/serviceContext.xml"/>
+
+    <!-- Enable the @Secured annotation to secure service layer methods -->
+    <!--<sec:global-method-security secured-annotations="enabled"/>-->
+
+    <sec:http auto-config='false' entry-point-ref="loginUrlAuthenticationEntryPoint" use-expressions="true">
+        <sec:intercept-url pattern="/VAADIN/**" access="permitAll"/>
+        <sec:intercept-url pattern="/auth/**" access="permitAll"/>
+        <sec:intercept-url pattern="/app/error" access="permitAll"/>
+        <sec:intercept-url pattern="/access-denied/**" access="hasAnyRole('FREE','PREMIUM','ADMIN')"/>
+        <sec:intercept-url pattern="/**" access="hasRole('ADMIN')"/>
+        <sec:form-login authentication-success-handler-ref="authenticationSuccessHandler"
+                        authentication-failure-url="/auth/#!login?error=failure"/>
+        <sec:logout invalidate-session="false" logout-success-url="/app/"/>
+        <sec:access-denied-handler ref="mssAccessDeniedHandler"/>
+    </sec:http>
+
+<!--
+    <sec:http auto-config='false' entry-point-ref="loginUrlAuthenticationEntryPoint" use-expressions="true">
+        <sec:intercept-url pattern="/VAADIN/**" access="permitAll" requires-channel="any"/>
+        <sec:intercept-url pattern="/auth/**" access="permitAll" requires-channel="any"/>
+        <sec:intercept-url pattern="/app/error" access="permitAll" requires-channel="any"/>
+        <sec:intercept-url pattern="/access-denied/**" access="hasAnyRole('FREE','PREMIUM','ADMIN')" requires-channel="any"/>
+        <sec:intercept-url pattern="/**" access="hasRole('ADMIN')" requires-channel="any"/>
+        <sec:form-login authentication-success-handler-ref="authenticationSuccessHandler"
+                        authentication-failure-url="/auth/#!login?error=failure"/>
+        <sec:logout invalidate-session="false" logout-success-url="/app/"/>
+        <sec:access-denied-handler ref="mssAccessDeniedHandler"/>
+    </sec:http> -->
+
+    <bean id="mssAccessDeniedHandler" class="com.fxmind.manager.controller.MssAccessDeniedHandler">
+        <property name="errorPageUrl" value="/access-denied/#!access-denied"/>
+    </bean>
+
+    <bean id="loginUrlAuthenticationEntryPoint"
+          class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg value="/auth/#!login"/>
+    </bean>
+
+    <bean id="authenticationSuccessHandler"
+          class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+        <constructor-arg value="/app/#!main"/>
+    </bean>
+
+    <sec:authentication-manager alias="mssAuthenticationManager">
+        <sec:authentication-provider ref="mssAuthenticationProvider"/>
+    </sec:authentication-manager>
+
+    <bean id="mssAuthenticationProvider"
+          class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <property name="userDetailsService" ref="mssUserDetailsService"/>
+        <property name="passwordEncoder" ref="md5PasswordEncoder"/>
+        <property name="saltSource" ref="reflectionSaltSource"/>
+    </bean>
+
+    <bean id="reflectionSaltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+        <property name="userPropertyToUse" value="username"/>
+    </bean>
+
+    <bean id="mssUserDetailsService" class="com.fxmind.manager.MssUserDetailsService"/>
+
+</beans>
+

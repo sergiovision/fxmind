@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+	<context-param>
+		<description>Vaadin production mode</description>
+		<param-name>productionMode</param-name>
+        <param-value>@app.production.mode@</param-value>
+	</context-param>
+
+    <display-name>FXMind Manager</display-name>
+
+    <servlet>
+        <servlet-name>fxmind</servlet-name>
+        <servlet-class>ru.xpoft.vaadin.SpringVaadinServlet</servlet-class>
+        <init-param>
+            <param-name>beanName</param-name>
+            <param-value>mainUI</param-value>
+        </init-param>
+        <init-param>
+            <param-name>widgetset</param-name>
+            <param-value>com.fxmind.manager.AdminWidgetSet</param-value>
+        </init-param>
+<!--        <init-param>
+            <param-name>org.atmosphere.useWebSocket</param-name>
+            <param-value>true</param-value>
+        </init-param> -->
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fxmind</servlet-name>
+        <url-pattern>/app/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fxmind</servlet-name>
+        <url-pattern>/VAADIN/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>fxmindAuth</servlet-name>
+        <servlet-class>ru.xpoft.vaadin.SpringVaadinServlet</servlet-class>
+        <init-param>
+            <param-name>beanName</param-name>
+            <param-value>loginUI</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fxmindAuth</servlet-name>
+        <url-pattern>/auth/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>fxmindAccessDenied</servlet-name>
+        <servlet-class>ru.xpoft.vaadin.SpringVaadinServlet</servlet-class>
+        <init-param>
+            <param-name>beanName</param-name>
+            <param-value>accessDeniedUI</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fxmindAccessDenied</servlet-name>
+        <url-pattern>/access-denied/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>fxmindError</servlet-name>
+        <servlet-class>ru.xpoft.vaadin.SpringVaadinServlet</servlet-class>
+        <init-param>
+            <param-name>beanName</param-name>
+            <param-value>errorUI</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fxmindError</servlet-name>
+        <url-pattern>/app/error</url-pattern>
+    </servlet-mapping>
+    <listener>
+            <listener-class>com.fxmind.manager.AdminStartupContextListener</listener-class> <!-- org.springframework.web.context.ContextLoaderListener -->
+    </listener>
+    <listener>
+            <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Spring Security -->
+	<filter>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>/app/#!public</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/app/error</location>
+    </error-page>
+
+</web-app>

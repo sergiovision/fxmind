@@ -1,0 +1,17 @@
+/* Import all the mixins for this theme */
+@import "webclient";
+
+
+/* Font embeds and keyframe definitions need to be 
+ * on the top level of the stylesheet, not nested 
+ * with any selectors, so we output them here */
+@include font-open-sans;
+@include icons-fontello;
+@include webclient-keyframes;
+
+
+/* Output the actual theme selectors */
+.webclient {
+	@include webclient;
+}
+

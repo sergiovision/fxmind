@@ -1,0 +1,21 @@
+.error-layout {
+  background-color: #EEEEEE;
+}
+
+.error-layout .title {
+  display: inline-block;
+  text-align: center !important;
+  padding-top: 45px;
+  padding-right: 106px;
+}
+
+.error-container {
+  background-color: #EEEEEE;
+  padding-left: 106px;
+  padding-right: 106px;
+  font-size: 18px !important;
+}
+
+.error-container .error-message {
+  padding-top: 45px;
+}
