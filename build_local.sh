@@ -1,8 +1,11 @@
-# set path to your JAVA 8 HOME path. Builds properly with JAVA 1.8
-JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home
-# export JAVA_HOME
-M2_HOME=/opt/local/share/java/maven3
-MAVEN_OPTS="-Xmx2048m -XX:+CMSClassUnloadingEnabled"
-export M2_HOME
-export MAVEN_OPTS
-mvn -T 2C -P local clean install 
+#!/usr/bin/env bash
+# Builds FXMind with the bundled Maven wrapper. Requires JDK 25+.
+set -euo pipefail
+cd "$(dirname "$0")"
+
+if [[ -z "${JAVA_HOME:-}" && -x /usr/libexec/java_home ]]; then
+  JAVA_HOME="$(/usr/libexec/java_home -v 25+ 2>/dev/null || true)"
+  export JAVA_HOME
+fi
+
+./mvnw -B -T 1C clean install -Pproduction "$@"

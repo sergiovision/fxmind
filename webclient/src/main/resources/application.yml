@@ -1,0 +1,81 @@
+# FXMind runtime configuration. Every secret is read from the environment - see .env.example.
+spring:
+  application:
+    name: fxmind
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    url: ${FXMIND_DB_URL:jdbc:mysql://localhost:3306/fxmind}
+    username: ${FXMIND_DB_USER:fxmind}
+    password: ${FXMIND_DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: ${FXMIND_DB_POOL_SIZE:10}
+      pool-name: fxmind-db
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    locations: classpath:db/migration
+  quartz:
+    job-store-type: memory
+    wait-for-jobs-to-complete-on-shutdown: true
+    properties:
+      org.quartz.threadPool.threadCount: 4
+  # SMTP is optional: set SPRING_MAIL_HOST, SPRING_MAIL_PORT, SPRING_MAIL_USERNAME, SPRING_MAIL_PASSWORD
+  mail:
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        same-site: lax
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: when-authorized
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: FXMind
+    description: Forex news calendar and crowd-sentiment aggregation for MetaTrader
+
+vaadin:
+  launch-browser: false
+
+fxmind:
+  broker:
+    time-zone: ${FXMIND_BROKER_TIME_ZONE:EET}
+  thrift:
+    enabled: ${FXMIND_THRIFT_ENABLED:true}
+    port: ${FXMIND_THRIFT_PORT:2011}
+  mail:
+    from: ${FXMIND_MAIL_FROM:fxmind-noreply@example.com}
+    registration-link-base: ${FXMIND_PUBLIC_URL:http://localhost:8080}/activate
+  admin:
+    email: ${FXMIND_ADMIN_EMAIL:}
+    password: ${FXMIND_ADMIN_PASSWORD:}
+
+logging:
+  level:
+    com.fxmind: INFO
+    org.atmosphere: WARN

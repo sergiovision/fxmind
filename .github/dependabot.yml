@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: maven
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      spring:
+        patterns: ["org.springframework*"]
+      vaadin:
+        patterns: ["com.vaadin*"]
+      test:
+        patterns: ["org.junit*", "org.assertj*", "org.mockito*", "org.testcontainers*", "com.tngtech.archunit*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly

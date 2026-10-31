@@ -1,0 +1,39 @@
+# Local stack: `cp .env.example .env`, fill in secrets, then `docker compose up --build`.
+services:
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: fxmind
+      MYSQL_USER: ${FXMIND_DB_USER:-fxmind}
+      MYSQL_PASSWORD: ${FXMIND_DB_PASSWORD:?set FXMIND_DB_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in .env}
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci", "--default-time-zone=+00:00"]
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      FXMIND_DB_URL: jdbc:mysql://mysql:3306/fxmind
+      # In-container ports are fixed; PORT / FXMIND_THRIFT_PORT from .env only choose the host ports.
+      PORT: "8080"
+      FXMIND_THRIFT_PORT: "2011"
+    ports:
+      - "${PORT:-8080}:8080"
+      - "${FXMIND_THRIFT_PORT:-2011}:2011"
+
+volumes:
+  mysql-data:

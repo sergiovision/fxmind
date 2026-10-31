@@ -16,7 +16,7 @@
  * Did you also notice that Thrift supports C style comments?
  */
 
-// to compile:  ./thrift -r -out ../java --gen java fxmind.thrift
+// Regenerate Java sources with: ./mvnw -pl businesslogic -Pthrift-gen generate-sources
 
 /**
  * Thrift files can namespace, package, or prefix their output in various

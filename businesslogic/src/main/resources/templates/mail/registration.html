@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Activate your FXMind account</title>
+</head>
+<body style="font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; color: #1f2933;">
+<h2>Welcome to FXMind</h2>
+<p>Hello, <span th:text="${email}">user@example.com</span>!</p>
+<p>To complete your registration, please confirm your e-mail address:</p>
+<p><a th:href="${activationLink}" th:text="${activationLink}">https://example.com/activate</a></p>
+<p style="color: #6b7280; font-size: 12px;">If you did not sign up for FXMind, you can ignore this message.</p>
+</body>
+</html>

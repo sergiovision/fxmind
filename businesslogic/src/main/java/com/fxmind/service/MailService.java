@@ -1,11 +1,9 @@
 package com.fxmind.service;
 
+import com.fxmind.domain.Person;
 
-import com.fxmind.entity.Person;
-
-/**
- * @author Sergei Zhuravlev
- */
+/** Outbound user notifications. */
 public interface MailService {
-    void sendRegistrationNotificationMail(Person person);
+
+    void sendRegistrationNotification(Person person);
 }

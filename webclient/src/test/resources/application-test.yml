@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:fxmind-web;MODE=MySQL;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  quartz:
+    auto-startup: false
+fxmind:
+  thrift:
+    enabled: false
+  scheduler:
+    enabled: false
+  admin:
+    email: admin@fxmind.test
+    password: integration-test-password
