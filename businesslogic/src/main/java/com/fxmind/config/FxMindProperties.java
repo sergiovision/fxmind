@@ -42,7 +42,8 @@ public record FxMindProperties(
             @NotBlank @DefaultValue("fxmind-noreply@example.com")
             String from,
 
-            @NotBlank @DefaultValue("FxHubJava registration") String registrationSubject,
+            @NotBlank @DefaultValue("FxHubJava registration")
+            String registrationSubject,
 
             @NotNull @DefaultValue("http://localhost:8080/activate")
             URI registrationLinkBase) {}
