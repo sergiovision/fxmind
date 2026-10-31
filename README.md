@@ -1,13 +1,13 @@
-# FXMind
+# FxHubJava
 
-[![CI](https://github.com/sergiovision/fxmind/actions/workflows/ci.yml/badge.svg)](https://github.com/sergiovision/fxmind/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/sergiovision/fxmind/actions/workflows/codeql.yml/badge.svg)](https://github.com/sergiovision/fxmind/actions/workflows/codeql.yml)
+[![CI](https://github.com/sergiovision/FxHubJava/actions/workflows/ci.yml/badge.svg)](https://github.com/sergiovision/FxHubJava/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/sergiovision/FxHubJava/actions/workflows/codeql.yml/badge.svg)](https://github.com/sergiovision/FxHubJava/actions/workflows/codeql.yml)
 ![Java 25](https://img.shields.io/badge/Java-25%20LTS-orange?logo=openjdk)
 ![Spring Boot 4](https://img.shields.io/badge/Spring%20Boot-4.1-6DB33F?logo=springboot)
 ![Vaadin 25](https://img.shields.io/badge/Vaadin%20Flow-25-00B4F0?logo=vaadin)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-FXMind is a **Forex market-intelligence server for algorithmic traders**. It:
+FxHubJava is a **Forex market-intelligence server for algorithmic traders**. It:
 
 * collects economic-calendar events and retail crowd-sentiment (long/short positioning) from several public sources;
 * normalises the data to UTC and stores it in MySQL;
@@ -16,6 +16,8 @@ FXMind is a **Forex market-intelligence server for algorithmic traders**. It:
 
 > A .NET successor of this project is available as [FinCore](https://github.com/sergiovision/FinCore).
 > This repository is the Java implementation, fully modernised to the 2026 Java stack.
+>
+> The project was formerly called FXMind. Technical identifiers keep the `fxmind` name so existing deployments and MetaTrader clients keep working: the Java packages (`com.fxmind`), Maven artifacts, the Thrift IDL (`FXMindMQL`), the `FXMIND_*` environment variables and the database name.
 
 ---
 

@@ -57,7 +57,7 @@ public class ThriftServerLifecycle implements SmartLifecycle {
                 .processor(new FXMindMQL.Processor<>(handler))
                 .executorService(workers));
         acceptor = Thread.ofPlatform().name("thrift-acceptor").daemon().start(server::serve);
-        log.info("FXMind MQL Thrift server listening on {}:{}", settings.host(), getPort());
+        log.info("FxHubJava MQL Thrift server listening on {}:{}", settings.host(), getPort());
     }
 
     @Override
@@ -67,7 +67,7 @@ public class ThriftServerLifecycle implements SmartLifecycle {
         }
         server.stop();
         workers.close();
-        log.info("FXMind MQL Thrift server stopped");
+        log.info("FxHubJava MQL Thrift server stopped");
         server = null;
         serverSocket = null;
         workers = null;

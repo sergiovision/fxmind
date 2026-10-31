@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>fxmind-core</artifactId>
-    <name>FXMind :: Core</name>
+    <name>FxHubJava :: Core</name>
     <description>Domain model, persistence, data providers and the Thrift adapter for MetaTrader clients.</description>
 
     <properties>

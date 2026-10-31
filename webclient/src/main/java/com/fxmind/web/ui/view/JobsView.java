@@ -23,7 +23,7 @@ import jakarta.annotation.security.RolesAllowed;
 
 /** Scheduled data-import jobs: state, last result, manual trigger and cron editing. */
 @Route(value = "jobs", layout = MainLayout.class)
-@PageTitle("Scheduled jobs | FXMind")
+@PageTitle("Scheduled jobs | FxHubJava")
 @RolesAllowed("ADMIN")
 public class JobsView extends VerticalLayout {
 

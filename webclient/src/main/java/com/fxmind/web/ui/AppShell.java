@@ -8,5 +8,5 @@ import com.vaadin.flow.theme.lumo.Lumo;
 /** Application shell: Lumo theme (dark variant) and PWA metadata for the admin console. */
 @StyleSheet(Lumo.STYLESHEET)
 @StyleSheet(Lumo.UTILITY_STYLESHEET)
-@PWA(name = "FXMind Console", shortName = "FXMind")
+@PWA(name = "FxHubJava Console", shortName = "FxHubJava")
 public class AppShell implements AppShellConfigurator {}

@@ -1,4 +1,4 @@
-# FXMind architecture
+# FxHubJava architecture
 
 ## Context
 

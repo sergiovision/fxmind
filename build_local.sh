@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds FXMind with the bundled Maven wrapper. Requires JDK 25+.
+# Builds FxHubJava with the bundled Maven wrapper. Requires JDK 25+.
 set -euo pipefail
 cd "$(dirname "$0")"
 

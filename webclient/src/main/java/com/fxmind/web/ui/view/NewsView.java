@@ -16,7 +16,7 @@ import org.springframework.data.domain.Sort;
 
 /** Lazily-loaded economic calendar of upcoming events. */
 @Route(value = "news", layout = MainLayout.class)
-@PageTitle("News calendar | FXMind")
+@PageTitle("News calendar | FxHubJava")
 @RolesAllowed("ADMIN")
 public class NewsView extends VerticalLayout {
 

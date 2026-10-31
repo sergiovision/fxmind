@@ -16,9 +16,9 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>FXMind</name>
-    <description>Forex market-intelligence platform: news calendar and crowd-sentiment aggregation served to MetaTrader over Thrift.</description>
-    <url>https://github.com/sergiovision/fxmind</url>
+    <name>FxHubJava</name>
+    <description>Forex market-intelligence server: Java 25, Spring Boot 4, Vaadin 25, Apache Thrift bridge to MetaTrader EAs. Ports &amp; Adapters, ArchUnit, Testcontainers, Flyway, Docker.</description>
+    <url>https://github.com/sergiovision/FxHubJava</url>
 
     <licenses>
         <license>

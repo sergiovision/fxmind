@@ -1,4 +1,4 @@
-# FXMind runtime configuration. Every secret is read from the environment - see .env.example.
+# FxHubJava runtime configuration. Every secret is read from the environment - see .env.example.
 spring:
   application:
     name: fxmind
@@ -56,7 +56,7 @@ management:
 
 info:
   app:
-    name: FXMind
+    name: FxHubJava
     description: Forex news calendar and crowd-sentiment aggregation for MetaTrader
 
 vaadin:

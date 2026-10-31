@@ -42,7 +42,7 @@ public record FxMindProperties(
             @NotBlank @DefaultValue("fxmind-noreply@example.com")
             String from,
 
-            @NotBlank @DefaultValue("FXMind registration") String registrationSubject,
+            @NotBlank @DefaultValue("FxHubJava registration") String registrationSubject,
 
             @NotNull @DefaultValue("http://localhost:8080/activate")
             URI registrationLinkBase) {}
@@ -52,7 +52,7 @@ public record FxMindProperties(
             @NotNull @DefaultValue("10s") Duration connectTimeout,
             @NotNull @DefaultValue("30s") Duration requestTimeout,
 
-            @NotBlank @DefaultValue("Mozilla/5.0 (compatible; FXMind/1.0)")
+            @NotBlank @DefaultValue("Mozilla/5.0 (compatible; FxHubJava/1.0)")
             String userAgent) {}
 
     /** Crowd-sentiment aggregation windows. */

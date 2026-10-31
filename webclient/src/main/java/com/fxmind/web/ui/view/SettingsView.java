@@ -19,7 +19,7 @@ import jakarta.annotation.security.RolesAllowed;
 
 /** Runtime settings with edit and reset-to-default. */
 @Route(value = "settings", layout = MainLayout.class)
-@PageTitle("Settings | FXMind")
+@PageTitle("Settings | FxHubJava")
 @RolesAllowed("ADMIN")
 public class SettingsView extends VerticalLayout {
 

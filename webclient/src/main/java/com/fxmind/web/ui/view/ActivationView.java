@@ -14,7 +14,7 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 /** Target of the link in the registration e-mail ({@code /activate?token=...}). */
 @Route("activate")
-@PageTitle("Account activation | FXMind")
+@PageTitle("Account activation | FxHubJava")
 @AnonymousAllowed
 public class ActivationView extends VerticalLayout implements BeforeEnterObserver {
 

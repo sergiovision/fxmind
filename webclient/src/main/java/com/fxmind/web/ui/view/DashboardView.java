@@ -23,7 +23,7 @@ import org.springframework.data.domain.Sort;
 
 /** At-a-glance health of data ingestion and the user base. */
 @Route(value = "", layout = MainLayout.class)
-@PageTitle("Dashboard | FXMind")
+@PageTitle("Dashboard | FxHubJava")
 @RolesAllowed("ADMIN")
 public class DashboardView extends VerticalLayout {
 

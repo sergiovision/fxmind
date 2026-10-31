@@ -9,14 +9,14 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @Route("login")
-@PageTitle("Sign in | FXMind")
+@PageTitle("Sign in | FxHubJava")
 @AnonymousAllowed
 public class LoginView extends LoginOverlay implements BeforeEnterObserver {
 
     public LoginView() {
         var i18n = LoginI18n.createDefault();
         i18n.setHeader(new LoginI18n.Header());
-        i18n.getHeader().setTitle("FXMind");
+        i18n.getHeader().setTitle("FxHubJava");
         i18n.getHeader().setDescription("Forex market-intelligence console");
         i18n.getForm().setUsername("E-mail");
         i18n.setAdditionalInformation(null);

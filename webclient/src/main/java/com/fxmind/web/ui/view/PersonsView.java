@@ -24,7 +24,7 @@ import java.math.BigDecimal;
 
 /** User administration: privilege, balance and activation status. */
 @Route(value = "users", layout = MainLayout.class)
-@PageTitle("Users | FXMind")
+@PageTitle("Users | FxHubJava")
 @RolesAllowed("ADMIN")
 public class PersonsView extends VerticalLayout {
 

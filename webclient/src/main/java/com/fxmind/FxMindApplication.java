@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 /**
- * FXMind entry point. Lives in the root package so component, entity and repository scanning cover
+ * FxHubJava entry point. Lives in the root package so component, entity and repository scanning cover
  * both the core module and the web module.
  */
 @SpringBootApplication

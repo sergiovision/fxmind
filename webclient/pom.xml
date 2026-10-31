@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>fxmind-web</artifactId>
-    <name>FXMind :: Web</name>
+    <name>FxHubJava :: Web</name>
     <description>Executable Spring Boot application: Vaadin admin console, security and Quartz scheduling.</description>
 
     <dependencies>

@@ -25,7 +25,7 @@ import jakarta.annotation.security.PermitAll;
 public class MainLayout extends AppLayout {
 
     public MainLayout(AuthenticationContext authentication) {
-        var title = new H1("FXMind");
+        var title = new H1("FxHubJava");
         title.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
 
         var user = new Span(authentication.getPrincipalName().orElse(""));
