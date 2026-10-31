@@ -21,10 +21,10 @@ jobs:
           distribution: temurin
           java-version: '25'
           cache: maven
-      - uses: github/codeql-action/init@v3
+      - uses: github/codeql-action/init@v4
         with:
           languages: java-kotlin
           queries: security-and-quality
       - name: Build
         run: ./mvnw -B -ntp package -DskipTests -Dspotless.check.skip -Djacoco.skip
-      - uses: github/codeql-action/analyze@v3
+      - uses: github/codeql-action/analyze@v4
